@@ -1,1 +1,19 @@
-This file was created by PyCharm 2.7.2 for binding GitHub repository
+This is an example of small Dalvik-bytecode disassembler.
+
+Usage:
+./de.py file_with_Dalvik_bytecode
+
+Disassembler is only part of more complex project, so I've place some stubs inside this code.
+I also provide some files (parts of real *.apk) for tests.
+
+Example:
+./de.py test1.dex.dat
+[[0, 'sget-object v0, {type} [{class}].{field} // field@2225'],
+ [2, 'invoke-virtual v0 @13970 // {class}->{method}'],
+ [5, 'move-result-object v0'],
+ [6, 'check-cast v0, [{type_name}] // type@0958'],
+ [8, 'return-object v0']]
+
+ Prerequisites:
+ Construct Library (2.5.0) http://construct.readthedocs.org/en/latest/
+
