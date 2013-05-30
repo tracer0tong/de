@@ -447,15 +447,15 @@ class DexDecompiler:
             if (sw_op == 0x00) and self.RawBytes[self.pos+1] == 0x01:
                 psp = self.PackedSwitchPayload.parse(self.RawBytes[self.pos:])
                 self.pos += (psp['sz']*2 + 4) * 2
-                operation = psp.__dict__
+                operation = dict(psp)
             elif (sw_op == 0x00) and self.RawBytes[self.pos+1] == 0x02:
                 ssp = self.SparseSwitchPayload.parse(self.RawBytes[self.pos:])
                 self.pos += (ssp['sz'] * 4 + 2) * 2
-                operation = ssp.__dict__
+                operation = dict(ssp)
             elif (sw_op == 0x00) and self.RawBytes[self.pos+1] == 0x03:
                 fadp = self.FillArrayDataPayload.parse(self.RawBytes[self.pos:])
                 self.pos += int((fadp['sz'] * fadp['element_width'] + 1)/2 + 4)*2
-                operation = fadp.__dict__
+                operation = dict(fadp)
             else:
                 if sw_op in self.OneWordInstructions:
                     operation = self.RawBytes[self.pos:self.pos + 2]
